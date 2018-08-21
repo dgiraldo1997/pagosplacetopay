@@ -96,10 +96,10 @@ class FormularioController extends Controller
             $client = new \SoapClient($this->url, $parametros);
             $result= $client->getBankList($parametros);
 
-            $arraybank = array();
+            $arraybanks = array();
             foreach ($result->getBankListResult as $banks) {
                 foreach ($banks as $bank) {
-                    $arraybank[$bank->bankCode] = $bank->bankName;
+                    $arraybanks[$bank->bankCode] = $bank->bankName;
                 }
             }
         } catch (Exception $e) {
@@ -107,10 +107,12 @@ class FormularioController extends Controller
         }
 
 
-        setcookie('cookie',json_encode($arraybank),time()+3600);
+        //guardando arreglo de bancos en cookie
+        /*setcookie('cookie',json_encode($arraybank),time()+3600);
         $data= json_encode($_COOKIE['cookie']);
         $attaybanck=json_decode($data);
-        $arraybanks=json_decode($attaybanck,true);
+        $arraybanks=json_decode($attaybanck,true);*/
+        //fin
         //Fin de WebService
 
         $arraybankinterfaces = array('0' => 'Personas', '1' => 'Empresas');

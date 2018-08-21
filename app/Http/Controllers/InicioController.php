@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Request;
 use App\Models\Transactions;
 use App\Models\TransactionsInformation;
+use App\Models\TransactionsResult;
 use Validator;
 
 class InicioController extends Controller
@@ -13,7 +14,7 @@ class InicioController extends Controller
     public function index()
     {
         //Consulta en la tabla transactions
-        $transactions=TransactionsInformation::get();
+        $transactions=TransactionsResult::get();
         $counttransaction=count($transactions);
         //fin de consulta
         return view('welcome',compact('counttransaction'));
